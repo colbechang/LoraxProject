@@ -39,7 +39,7 @@ def get_industry_names(userID):
 
 # Get an industry row
 @activists.route('/industries/<industryID>', methods=['GET'])
-def get_industry_names(industryID):
+def get_industry(industryID):
     cursor = db.get_db().cursor()
     country_name = '(select name from countries c where c.countryID = i.countryID) as country'
     cursor.execute('select name, annual emmissions, annual_revenue, {1} from industry i where id = {0} orderby country'.format(industryID, country_name))
