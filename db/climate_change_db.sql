@@ -41,7 +41,11 @@ create table climate_change_trends(
     temperature float not null,
     air_quality float not null,
     sea_level float not null,
+    cityID int,
+    rf_cityID int,
     primary key(trend_year)
+    foreign key (cityID) references cities(cityID),
+    foreign key (rf_cityID) referneces radiative_forcing(rf_cityID)
 );
 
 
@@ -122,7 +126,7 @@ create table radiative_forcing(
 
 create table adaptation_techniques(
     adaptationid int auto_increment not null,
-    adapatation_technique varchar(30) not null,
+    adaptation_technique varchar(30) not null,
     est_lives_saved_per_dollar int not null,
     est_dollars_saved_per_dollar float not null,
     primary key(adaptationid)
@@ -363,86 +367,86 @@ insert into countries (countryid, country, population_in_millions, air_quality, 
 insert into countries (countryid, country, population_in_millions, air_quality, sea_level, GDP_in_billions, continentID) values (194, 'Madagascar', 776, 133, 57, '$19.32', '7');
 insert into countries (countryid, country, population_in_millions, air_quality, sea_level, GDP_in_billions, continentID) values (195, 'Croatia', 432, 102, 71, '$5.87', '1');
 
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (7.1, 1, 389, 38);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (22.1, 2, 380, 72);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (11.0, 3, 492, 76);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (11.2, 4, 437, 73);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (17.8, 5, 187, 97);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (16.9, 6, 36, 53);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (26.5, 7, 459, 15);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (13.2, 8, 392, 59);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (21.5, 9, 469, 73);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (29.5, 10, 18, 69);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (10.0, 11, 258, 40);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (14.7, 12, 99, 60);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (25.1, 13, 178, 57);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (5.3, 14, 196, 60);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (4.8, 15, 222, 33);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (3.9, 16, 397, 71);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (7.2, 17, 457, 64);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (20.6, 18, 245, 77);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (8.8, 19, 283, 15);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (3.1, 20, 320, 90);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (23.9, 21, 120, 63);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (24.2, 22, 209, 44);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (26.2, 23, 487, 47);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (18.5, 24, 24, 47);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (0.7, 25, 443, 23);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (6.2, 26, 79, 44);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (10.8, 27, 160, 79);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (24.9, 28, 227, 30);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (21.1, 29, 102, 39);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (4.3, 30, 34, 80);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (6.6, 31, 350, 89);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (31.0, 32, 314, 77);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (12.1, 33, 82, 31);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (5.6, 34, 349, 26);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (19.8, 35, 444, 62);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (12.0, 36, 101, 35);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (13.1, 37, 298, 18);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (6.2, 38, 132, 54);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (8.7, 39, 213, 68);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (22.8, 40, 348, 19);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (17.0, 41, 238, 23);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (3.5, 42, 309, 100);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (12.7, 43, 34, 68);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (13.3, 44, 419, 100);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (16.4, 45, 336, 10);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (1.6, 46, 405, 20);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (13.4, 47, 69, 80);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (14.8, 48, 207, 20);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (5.6, 49, 317, 54);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (2.2, 50, 208, 41);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (9.7, 51, 296, 64);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (11.7, 52, 180, 93);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (20.8, 53, 20, 68);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (32.0, 54, 11, 25);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (5.7, 55, 400, 100);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (22.5, 56, 404, 23);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (3.4, 57, 132, 64);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (24.8, 58, 366, 32);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (5.6, 59, 193, 26);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (31.1, 60, 359, 85);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (3.3, 61, 457, 99);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (28.7, 62, 379, 47);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (29.2, 63, 297, 43);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (16.3, 64, 229, 58);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (24.8, 65, 419, 76);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (25.7, 66, 3, 51);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (12.8, 67, 27, 71);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (26.5, 68, 249, 33);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (19.9, 69, 42, 35);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (11.7, 70, 288, 59);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (2.8, 71, 162, 34);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (14.7, 72, 470, 87);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (5.8, 73, 18, 50);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (12.8, 74, 373, 70);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (30.8, 75, 401, 75);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (2.1, 76, 68, 84);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (12.4, 77, 238, 23);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (26.6, 78, 83, 12);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (23.4, 79, 15, 21);
-insert into climate_change_trends (temperature, trend_year, air_quality, sea_level) values (17.6, 80, 388, 74);
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (17.6, 1, 136, 61, '7', '19');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (30.7, 2, 170, 40, '24', '44');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (4.0, 3, 273, 44, '13', '24');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (11.9, 4, 439, 87, '27', '23');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (4.9, 5, 212, 67, '20', '79');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (1.6, 6, 35, 65, '25', '55');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (25.6, 7, 157, 67, '30', '70');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (30.7, 8, 156, 65, '26', '41');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (0.4, 9, 27, 37, '15', '10');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (15.5, 10, 281, 39, '6', '63');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (29.3, 11, 234, 17, '14', '80');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (1.6, 12, 331, 58, '18', '53');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (8.3, 13, 314, 95, '22', '14');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (21.0, 14, 197, 72, '4', '28');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (19.6, 15, 235, 45, '5', '11');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (3.9, 16, 264, 70, '28', '62');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (29.7, 17, 88, 31, '23', '1');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (22.8, 18, 291, 100, '9', '50');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (4.4, 19, 141, 75, '19', '58');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (8.0, 20, 307, 31, '3', '21');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (7.0, 21, 41, 48, '10', '31');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (18.6, 22, 73, 55, '17', '59');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (28.8, 23, 21, 15, '21', '68');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (20.1, 24, 106, 57, '2', '72');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (14.4, 25, 126, 26, '16', '49');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (29.5, 26, 356, 91, '12', '26');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (25.0, 27, 86, 15, '1', '38');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (26.8, 28, 364, 54, '8', '4');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (24.1, 29, 328, 24, '11', '40');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (5.6, 30, 54, 85, '29', '34');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (24.0, 31, 450, 88, '14', '35');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (7.2, 32, 349, 58, '18', '17');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (26.0, 33, 252, 99, '12', '32');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (19.6, 34, 155, 91, '25', '54');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (18.5, 35, 25, 78, '17', '77');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (18.2, 36, 123, 66, '28', '20');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (1.0, 37, 475, 63, '24', '37');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (18.2, 38, 153, 64, '3', '48');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (5.3, 39, 295, 60, '26', '71');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (24.2, 40, 213, 12, '5', '73');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (31.1, 41, 400, 42, '30', '9');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (16.4, 42, 287, 87, '15', '47');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (21.8, 43, 387, 46, '29', '56');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (2.1, 44, 450, 53, '27', '42');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (10.3, 45, 251, 85, '4', '51');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (28.3, 46, 465, 48, '10', '18');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (7.6, 47, 287, 58, '22', '78');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (16.4, 48, 117, 28, '9', '33');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (21.2, 49, 451, 56, '20', '52');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (4.6, 50, 324, 34, '19', '13');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (23.9, 51, 376, 69, '13', '74');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (8.3, 52, 298, 10, '21', '60');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (5.8, 53, 343, 25, '11', '16');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (24.6, 54, 202, 47, '8', '67');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (3.3, 55, 361, 81, '16', '46');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (4.1, 56, 65, 70, '6', '66');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (0.1, 57, 470, 85, '1', '6');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (10.3, 58, 473, 51, '2', '65');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (28.1, 59, 355, 43, '23', '22');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (7.4, 60, 146, 58, '7', '3');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (4.2, 61, 394, 41, '30', '43');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (1.0, 62, 382, 32, '29', '5');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (10.6, 63, 360, 51, '10', '12');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (8.2, 64, 63, 23, '7', '61');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (5.0, 65, 344, 53, '13', '25');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (19.8, 66, 270, 11, '4', '27');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (23.3, 67, 279, 11, '27', '7');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (14.8, 68, 38, 75, '21', '45');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (19.4, 69, 400, 32, '17', '2');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (0.1, 70, 341, 50, '12', '69');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (13.8, 71, 372, 94, '22', '36');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (30.5, 72, 81, 32, '20', '57');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (29.4, 73, 413, 57, '15', '29');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (10.6, 74, 61, 31, '19', '75');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (17.9, 75, 373, 19, '25', '8');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (1.2, 76, 31, 91, '24', '15');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (24.1, 77, 89, 16, '2', '64');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (30.4, 78, 87, 87, '14', '76');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (25.5, 79, 495, 14, '26', '39');
+insert into climate_change_trends (temperature, trend_year, air_quality, sea_level, cityID, rf_cityID) values (27.9, 80, 238, 19, '23', '30');
 
 
 insert into cities (cityid, city, population_in_millions, sea_level, GDP_in_billions, countryID, trend_year) values (1, 'Xiexiong', 57, 170.4, 5.89, '29', '63');
