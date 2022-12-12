@@ -1,25 +1,14 @@
-# MySQL + Flask Boilerplate Project
+# Lorax Project
 
-This repo contains a boilerplate setup for spinning up 2 docker containers: 
-1. A MySQL 8 container for obvious reasons
-1. A Python Flask container to implement a REST API
+We have created an application to explore and contribute to climate change data for governing bodies, researchers, activists, or anyone who would like to educate themselves and the world. Our UI allows access to a database of climate change emissions (radiative forcing) and effects trends by industry and by specific location. It also has an extensive catalog of each city’s individual citizen carbon footprint, adaptation techniques, mitigation techniques, and energy generation methods.
 
-## How to setup and start the containers
-**Important** - you need Docker Desktop installed
+In our src folder, we have:
+- governments
+- activists
+- researchers
+- dictatorship
 
-1. Clone this repository.  
-1. Create a file named `db_root_password.txt` in the `secrets/` folder and put inside of it the root password for MySQL. 
-1. Create a file named `db_password.txt` in the `secrets/` folder and put inside of it the password you want to use for the `webapp` user. 
-1. In a terminal or command prompt, navigate to the folder with the `docker-compose.yml` file.  
-1. Build the images with `docker compose build`
-1. Start the containers with `docker compose up`.  To run in detached mode, run `docker compose up -d`. 
-
-## For setting up a Conda Web-Dev environment:
-
-1. `conda create -n webdev python=3.9`
-1. `conda activate webdev`
-1. `pip install flask flask-mysql flask-restful cryptography flask-login`
-
-
-
-
+Credits:
+Colbe Chang - handled the government appsmith pages, added a table to look up people and industries based on countries, general country data, a form to add a new person or industry,a heat map to show the air quality in all the continents. Also, created the database and added the mock data
+Oliver Toh - handled the activists and dictatorships appsmith pages, created the UI/UX design for all the wireframes, handled the researcher charts
+Krishna Singh - handled the researcher appsmith forms, formed the relational database diagrams for the database
