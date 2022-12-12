@@ -69,6 +69,50 @@ def get_maxID(id, table):
     the_response.mimetype = 'application/json'
     return the_response
 
+# Get adaptation techniques lives saved
+@researchers.route('/adaptation/lives_saved', methods=['GET'])
+def get_lives_saved():
+    cursor = db.get_db().cursor()
+    cursor.execute('select adaptation_technique as x, est_lives_saved_per_dollar as y from adaptation_techniques order by est_lives_saved_per_dollar')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Get emissions per dollar saved
+@researchers.route('/mitigation/emissions_saved', methods=['GET'])
+def get_emissions_saved():
+    cursor = db.get_db().cursor()
+    cursor.execute('select mitigation_type as x, WPM_RFMPD as y from mitigation_techniques order by WPM_RFMPD')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Get sea level per year
+@researchers.route('/sea_levels', methods=['GET'])
+def get_sea_levels():
+    cursor = db.get_db().cursor()
+    cursor.execute('select trend_year as x, sea_level as y from climate_change_trends order by trend_year')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 """
 POST methods
 """
