@@ -39,43 +39,33 @@ def get_person(id):
 @dictatorship.route('/people/rip/<id>', methods=['DELETE'])
 def terminate_person(id):
     cursor = db.get_db().cursor()
-    cursor.execute('''delete from people where peopleID = {}'''.format(id))
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
+    cursor.execute('''delete from people where peopleID = "{}"'''.format(id))
+    the_response = make_response()
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
+    db.get_db().commit()
     return the_response
 
 # Reward persion by id
 @dictatorship.route('/people/nice/<id>/<amt>', methods=['PUT'])
 def reward_person(id, amt):
+    amt = amt.replace(",","")
     cursor = db.get_db().cursor()
     cursor.execute('''update people set income = income + {} where peopleID = {}'''.format(amt, id))
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
+    the_response = make_response()
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
+    db.get_db().commit()
     return the_response
 
 # Fine persion by id
 @dictatorship.route('/people/naughty/<id>/<amt>', methods=['PUT'])
 def fine_person(id, amt):
+    amt = amt.replace(",","")
     cursor = db.get_db().cursor()
     cursor.execute('''update people set income = income - {} where peopleID = {}'''.format(amt, id))
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
+    the_response = make_response()
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
+    db.get_db().commit()
     return the_response
