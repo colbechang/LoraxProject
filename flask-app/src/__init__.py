@@ -31,10 +31,12 @@ def create_app():
     from src.activists.activists import activists
     from src.government.governments import governments
     from src.dictatorship.dictatorship import dictatorship
+    from src.researchers.researchers import researchers
 
     # Register the routes that we just imported so they can be properly handled
   
     app.register_blueprint(activists,   url_prefix='/activists')
+    app.register_blueprint(researchers,   url_prefix='/researchers')
     app.register_blueprint(governments, url_prefix='/gov')
     app.register_blueprint(dictatorship,   url_prefix='/dictatorship')
 
