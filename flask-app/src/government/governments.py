@@ -108,7 +108,7 @@ def add_person():
 @governments.route('/all_people' , methods=['GET'])
 def get_people():
     cursor = db.get_db().cursor()
-    query = 'select * from people order by first_name'
+    query = 'select * from people'
     cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -144,6 +144,51 @@ def get_max_industryid():
     for row in theData:
         json_data.append(dict(zip(row_headers, row)))
     the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+@governments.route('/air_quality', methods=['GET'])
+def get_air_quality():
+    cursor = db.get_db().cursor()
+    query = 'select con.continent as id, round(avg(co.air_quality), 2) as value from continents con join countries co on con.continentID = co.continentID group by co.continentID'
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+@governments.route('/cc_trends', methods=['GET'])
+def cc_trends():
+    cursor = db.get_db().cursor()
+    query = 'select cc.trend_year as x, avg(co.air_quality) as y from climate_change_trends cc join cities ci on cc.trend_year = ci.trend_year join countries co on co.countryID = ci.countryID group by ci.trend_year, co.country'
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+@governments.route('/test/<table>', methods=['GET'])
+def industries(table):
+    cursor = db.get_db().cursor()
+    query = 'select * from {}'.format(table)
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
