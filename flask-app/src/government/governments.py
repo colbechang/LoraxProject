@@ -178,7 +178,7 @@ def cc_trends():
     the_response.mimetype = 'application/json'
     return the_response
 
-@governments.route('/test/<table>', methods=['GET'])
+@governments.route('/table/<table>', methods=['GET'])
 def industries(table):
     cursor = db.get_db().cursor()
     query = 'select * from {}'.format(table)

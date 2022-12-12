@@ -25,9 +25,6 @@ def create_app():
     db.init_app(app)
     
     # Import the various routes
-    from src.views import views
-    from src.customers.customers import customers
-    from src.products.products  import products
     from src.activists.activists import activists
     from src.government.governments import governments
     from src.dictatorship.dictatorship import dictatorship
