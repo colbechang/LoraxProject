@@ -161,11 +161,11 @@ create table city_adaptation_techs(
 
 insert into continents (continentID, continent) values (1, 'NA');
 insert into continents (continentID, continent) values (2, 'AF');
-insert into continents (continentID, continent) values (3, 'AF');
+insert into continents (continentID, continent) values (3, 'OC');
 insert into continents (continentID, continent) values (4, 'AS');
-insert into continents (continentID, continent) values (5, 'NA');
+insert into continents (continentID, continent) values (5, 'EU');
 insert into continents (continentID, continent) values (6, 'SA');
-insert into continents (continentID, continent) values (7, 'SA');
+insert into continents (continentID, continent) values (7, 'AN');
 
 
 insert into countries (countryid, country, population_in_millions, air_quality, sea_level, GDP_in_billions, continentID) values (1, 'China', 594, 139, 85, '$30.44', '5');
