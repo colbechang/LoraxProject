@@ -8,6 +8,9 @@ In our src folder, we have:
 - researchers
 - dictatorship
 
+Link to the Youtube video:
+https://youtu.be/wblkGOzoz7Y
+
 Credits:
 - Colbe Chang - handled the government appsmith pages, added a table to look up people and industries based on countries, general country data, a form to add a new person or industry,a heat map to show the air quality in all the continents. Also, created the database and added the mock data
 - Oliver Toh - handled the activists and dictatorships appsmith pages, created the UI/UX design for all the wireframes, handled the researcher charts
